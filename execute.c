@@ -5,7 +5,7 @@
 * @counter: line_counter
 * @file: poiner to monty file
 * @content: line content
-* Return: no return
+* Return: 0
 */
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
@@ -27,23 +27,23 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 				{"stack", f_stack},
 				{NULL, NULL}
 				};
-	unsigned int i = 0;
-	char *op;
+	unsigned int p = 0;
+	char *r;
 
-	op = strtok(content, " \n\t");
-	if (op && op[0] == '#')
+	r = strtok(content, " \n\t");
+	if (r && r[0] == '#')
 		return (0);
 	bus.arg = strtok(NULL, " \n\t");
-	while (opst[i].opcode && op)
+	while (opst[p].opcode && r)
 	{
-		if (strcmp(op, opst[i].opcode) == 0)
-		{	opst[i].f(stack, counter);
+		if (strcmp(r, opst[p].opcode) == 0)
+		{	opst[p].f(stack, counter);
 			return (0);
 		}
-		i++;
+		p++;
 	}
-	if (op && opst[i].opcode == NULL)
-	{ fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
+	if (r && opst[p].opcode == NULL)
+	{ fprintf(stderr, "L%d: unknown instruction %s\n", counter, r);
 		fclose(file);
 		free(content);
 		free_stack(*stack);
