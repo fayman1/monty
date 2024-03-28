@@ -3,19 +3,19 @@
  * f_pall - prints the stack
  * @head: stack head
  * @counter: no used
- * Return: no return
+ * Return: void
 */
 void f_pall(stack_t **head, unsigned int counter)
 {
-	stack_t *h;
+	stack_t *s;
 	(void)counter;
 
-	h = *head;
-	if (h == NULL)
+	s = *head;
+	if (s == NULL)
 		return;
-	while (h)
+	while (s)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
+		printf("%d\n", s->n);
+		s = s->next;
 	}
 }

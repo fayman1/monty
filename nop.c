@@ -3,7 +3,7 @@
   *f_nop- nothing
   *@head: stack head
   *@counter: line_number
-  *Return: no return
+  *Return: void
  */
 void f_nop(stack_t **head, unsigned int counter)
 {
